@@ -37,11 +37,17 @@ public class charactermove : MonoBehaviour
         if (isMoveable)
         {
             bool isMove = false;
-
+            bool right = true;
             {
                 Vector3 dir = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 5f);
-                if (dir.x < 0f) transform.localScale = new Vector3(-1f, 1f, 1f);
-                else if (dir.x > 0f) transform.localScale = new Vector3(1f, 1f, 1f);
+                Debug.Log(dir);
+                if (dir.x < 0f) right = false;
+                else if (dir.x > 0f) right = true;
+
+                Vector3 currentScale = transform.localScale;
+                if (right && currentScale.x < 0) currentScale.x *= -1;
+                if (!right && currentScale.x > 0) currentScale.x *= -1;
+                transform.localScale = currentScale;
                 transform.position += dir * speed * Time.deltaTime;
                 isMove = dir.magnitude != 0f;
 
