@@ -6,10 +6,10 @@ public class charactermove : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float speed = 10000000f;
+    public float speed = 3f;
     public bool isMoveable = true;
     public Animator animator;
-    public float zoom = 3;
+    public float zoom = 2;
     //public int  PlayerSetting=0;
 
     void Start()
