@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class charactermove : MonoBehaviour
 {
@@ -10,7 +12,13 @@ public class charactermove : MonoBehaviour
     public bool isMoveable = true;
     public Animator animator;
     public float zoom = 2;
+    public Button Button_find;
     //public int  PlayerSetting=0;
+
+    
+
+    public GameObject foundChest;
+
 
     void Start()
     {
@@ -84,6 +92,22 @@ public class charactermove : MonoBehaviour
 
         }
 
+        
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        foundChest = collider.gameObject;
+        if (foundChest.layer == 8)
+            Button_find.interactable = true;
 
     }
+    void OnTriggerExit2D(Collider2D collider)
+    {   
+        
+        Button_find.interactable = false;
+    }
+
+    
+
 }
