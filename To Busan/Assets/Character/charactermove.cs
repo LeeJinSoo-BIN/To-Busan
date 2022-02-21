@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
+
+
 public class charactermove : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,7 +18,7 @@ public class charactermove : MonoBehaviour
     public Button Button_find;
     //public int  PlayerSetting=0;
 
-    
+
 
     public GameObject foundChest;
 
@@ -36,36 +39,34 @@ public class charactermove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Click();
         Move();
     }
 
+    /*void Click()
+    {
+        if (GameObject.Find("button find").GetComponent<ClickButton>().click == true)
+        { isMoveable = false;
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            isMoveable = true;
+
+        }
+
+     }*/
 
     public void Move()
     {
-
+        // Click();
         if (isMoveable)
         {
-            bool isMove = false;
-            Vector3 currentScale = transform.localScale;
             {
-                Vector3 dir = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 5f);
-                if (dir.x < 0f)
-                {
-                    if (currentScale.x > 0)
-                        currentScale.x *= -1;
-                }
-                else if (dir.x > 0f)
-                {
-                    if (currentScale.x < 0)
-                        currentScale.x *= -1;
-                }                
-                transform.localScale = currentScale;
-                transform.position += dir * speed * Time.deltaTime;
-                isMove = dir.magnitude != 0f;
+                bool isMove = false;
+                Vector3 currentScale = transform.localScale;
 
-            }
 
-            {
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 dir = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
@@ -85,29 +86,58 @@ public class charactermove : MonoBehaviour
                     isMove = dir.magnitude != 0f;
 
                 }
+
+                else
+                {
+                    Vector3 dir = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 5f);
+                    if (dir.x < 0f)
+                    {
+                        if (currentScale.x > 0)
+                            currentScale.x *= -1;
+                    }
+                    else if (dir.x > 0f)
+                    {
+                        if (currentScale.x < 0)
+                            currentScale.x *= -1;
+                    }
+                    transform.localScale = currentScale;
+                    transform.position += dir * speed * Time.deltaTime;
+                    isMove = dir.magnitude != 0f;
+
+                }
+
+
+
+                animator.SetBool("isWalking", isMove);
+
+
+
+
             }
-            animator.SetBool("isWalking", isMove);
-
-
 
         }
-
-        
+        else animator.SetBool("isWalking", false);
     }
+
+
+
 
     void OnTriggerStay2D(Collider2D collider)
     {
         foundChest = collider.gameObject;
         if (foundChest.layer == 8)
+        {
             Button_find.interactable = true;
+
+        }
 
     }
     void OnTriggerExit2D(Collider2D collider)
-    {   
-        
+    {
+
         Button_find.interactable = false;
     }
 
-    
+
 
 }

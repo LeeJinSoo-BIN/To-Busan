@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ClickButton : MonoBehaviour
 {
+
     // Start is called before the first frame update
     public Sprite gear;
     public Sprite oil;
@@ -16,12 +17,16 @@ public class ClickButton : MonoBehaviour
     public int maxInventory = 5;
 
 
+
     public void onClickFindButton()
     {
+        charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
+        Move.isMoveable = false;
         GameObject foundChest = GameObject.Find("character").GetComponent<charactermove>().foundChest;
         GameObject chestui = GameObject.Find("Canvas").transform.Find("chest ui").gameObject;
         fillChest(foundChest, chestui);
         chestui.SetActive(true);
+
     }
     private void fillChest(GameObject foundChest, GameObject chestui)
     {
@@ -65,7 +70,10 @@ public class ClickButton : MonoBehaviour
 
     public void onClickCloseButton()
     {
-
+        // click = false;
+        charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
+        Move.isMoveable = true;
+        //  GameObject.Find("character").GetComponent<charactermove>().isMoveable = false;
         close_chest_ui();
         GameObject chestui = GameObject.Find("Canvas").transform.Find("chest ui").gameObject;
         chestui.SetActive(false);
@@ -74,7 +82,7 @@ public class ClickButton : MonoBehaviour
     public void close_chest_ui()
     {
         Transform chest = GameObject.Find("Canvas").transform.Find("chest ui").Find("chest");
-       
+
         for (int k = 0; k < chest.childCount; k++)
         {
             chest.GetChild(k).gameObject.SetActive(false);
@@ -86,7 +94,7 @@ public class ClickButton : MonoBehaviour
     {
         Transform inventory = GameObject.Find("Canvas").transform.Find("game ui").Find("inventory");
 
-        
+
         for (int k = 0; k < inventory.childCount; k++)
         {
             inventory.GetChild(k).gameObject.SetActive(false);
@@ -96,7 +104,8 @@ public class ClickButton : MonoBehaviour
 
     public void onClickComponentButton()
     {
-
+        //click = false;
+        // GameObject.Find("character").GetComponent<charactermove>().isMoveable = false;
         GameObject foundChest = GameObject.Find("character").GetComponent<charactermove>().foundChest;
         int num_comp = int.Parse(transform.name);
 
@@ -153,12 +162,14 @@ public class ClickButton : MonoBehaviour
 
     public void onClickPartsButton()
     {
+        // click = true;
         GameObject character_inventory = GameObject.Find("character").transform.Find("Inventory").gameObject;
         GameObject inventory_ui = GameObject.Find("Canvas").transform.Find("game ui").Find("inventory").gameObject;
         GameObject partsArea = GameObject.Find("character").GetComponent<charactermove>().foundChest;
-
+        // GameObject.Find("character").GetComponent<charactermove>().isMoveable=false ;
         int num_comp = int.Parse(transform.name);
-        if (partsArea.gameObject.layer == 9)        {
+        if (partsArea.gameObject.layer == 9)
+        {
             character_inventory.transform.GetChild(num_comp).SetParent(partsArea.transform);
             fill_inventory();
         }
