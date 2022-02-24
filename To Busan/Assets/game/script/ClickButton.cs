@@ -70,10 +70,10 @@ public class ClickButton : MonoBehaviour
 
     public void onClickCloseButton()
     {
-        // click = false;
+      
         charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
         Move.isMoveable = true;
-        //  GameObject.Find("character").GetComponent<charactermove>().isMoveable = false;
+   
         close_chest_ui();
         GameObject chestui = GameObject.Find("Canvas").transform.Find("chest ui").gameObject;
         chestui.SetActive(false);
@@ -104,8 +104,7 @@ public class ClickButton : MonoBehaviour
 
     public void onClickComponentButton()
     {
-        //click = false;
-        // GameObject.Find("character").GetComponent<charactermove>().isMoveable = false;
+      
         GameObject foundChest = GameObject.Find("character").GetComponent<charactermove>().foundChest;
         int num_comp = int.Parse(transform.name);
 
@@ -162,11 +161,11 @@ public class ClickButton : MonoBehaviour
 
     public void onClickPartsButton()
     {
-        // click = true;
+       
         GameObject character_inventory = GameObject.Find("character").transform.Find("Inventory").gameObject;
         GameObject inventory_ui = GameObject.Find("Canvas").transform.Find("game ui").Find("inventory").gameObject;
         GameObject partsArea = GameObject.Find("character").GetComponent<charactermove>().foundChest;
-        // GameObject.Find("character").GetComponent<charactermove>().isMoveable=false ;
+       
         int num_comp = int.Parse(transform.name);
         if (partsArea.gameObject.layer == 9)
         {

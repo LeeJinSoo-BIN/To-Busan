@@ -15,7 +15,7 @@ TagManager:
   - player
   - item chest
   - parts
-  - 
+  - LightMap
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Light Map
+    uniqueID: 3525219251
     locked: 0

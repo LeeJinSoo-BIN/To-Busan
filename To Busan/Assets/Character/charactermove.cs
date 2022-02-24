@@ -26,40 +26,25 @@ public class charactermove : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        // if (hasAuthority)
-        // {
+        
         Camera cam = Camera.main;
         cam.transform.SetParent(transform);
         cam.transform.localPosition = new Vector3(0f, 0f, -1f);
         cam.orthographicSize = zoom;
-        // }
+      
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Click();
+      
         Move();
     }
 
-    /*void Click()
-    {
-        if (GameObject.Find("button find").GetComponent<ClickButton>().click == true)
-        { isMoveable = false;
-            animator.SetBool("isWalking", false);
-        }
-        else
-        {
-            isMoveable = true;
-
-        }
-
-     }*/
-
     public void Move()
     {
-        // Click();
+       
         if (isMoveable)
         {
             {
