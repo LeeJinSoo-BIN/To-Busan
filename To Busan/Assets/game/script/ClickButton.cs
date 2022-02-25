@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 public class ClickButton : MonoBehaviour
 {
 
@@ -16,8 +18,9 @@ public class ClickButton : MonoBehaviour
     public Sprite scan;
     public int maxInventory = 5;
 
+    public GameObject mission_list;
 
-
+    private List<string> part_names = new List<string>(new string[] { "gear", "oil", "driver", "screw", "iron" });
     public void onClickFindButton()
     {
         charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
@@ -70,10 +73,10 @@ public class ClickButton : MonoBehaviour
 
     public void onClickCloseButton()
     {
-      
+
         charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
         Move.isMoveable = true;
-   
+
         close_chest_ui();
         GameObject chestui = GameObject.Find("Canvas").transform.Find("chest ui").gameObject;
         chestui.SetActive(false);
@@ -104,7 +107,7 @@ public class ClickButton : MonoBehaviour
 
     public void onClickComponentButton()
     {
-      
+
         GameObject foundChest = GameObject.Find("character").GetComponent<charactermove>().foundChest;
         int num_comp = int.Parse(transform.name);
 
@@ -159,22 +162,43 @@ public class ClickButton : MonoBehaviour
 
     }
 
+    void update_mission_ui(string name)
+    {
+
+
+
+        Transform current_part = mission_list.transform.Find(name);
+        int goal = int.Parse(current_part.GetChild(0).GetComponent<TextMeshProUGUI>().text.Split('/')[1]);
+        int now = int.Parse(current_part.GetChild(0).GetComponent<TextMeshProUGUI>().text.Split('/')[0]);
+        current_part.GetChild(0).GetComponent<TextMeshProUGUI>().text = string.Format("{0,2} / {1,-2}", now + 1, goal);
+        if (now + 1 >= goal)
+            current_part.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color32(64, 255, 64, 255);
+
+    }
+
     public void onClickPartsButton()
     {
-       
+
         GameObject character_inventory = GameObject.Find("character").transform.Find("Inventory").gameObject;
         GameObject inventory_ui = GameObject.Find("Canvas").transform.Find("game ui").Find("inventory").gameObject;
         GameObject partsArea = GameObject.Find("character").GetComponent<charactermove>().foundChest;
-       
+
         int num_comp = int.Parse(transform.name);
         if (partsArea.gameObject.layer == 9)
         {
-            character_inventory.transform.GetChild(num_comp).SetParent(partsArea.transform);
-            fill_inventory();
+            string part_name = character_inventory.transform.GetChild(num_comp).name;
+            if (part_names.Contains(part_name))
+            {
+                character_inventory.transform.GetChild(num_comp).SetParent(partsArea.transform);
+
+
+                update_mission_ui(part_name);
+                fill_inventory();
+            }
         }
 
 
     }
-
-
 }
+
+
