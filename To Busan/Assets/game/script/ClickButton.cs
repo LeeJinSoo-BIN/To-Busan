@@ -21,6 +21,9 @@ public class ClickButton : MonoBehaviour
     public GameObject mission_list;
 
     private List<string> part_names = new List<string>(new string[] { "gear", "oil", "driver", "screw", "iron" });
+
+    private bool isOpenMiniMap = false;
+    
     public void onClickFindButton()
     {
         charactermove Move = GameObject.Find("character").GetComponent<charactermove>();
@@ -196,6 +199,18 @@ public class ClickButton : MonoBehaviour
                 fill_inventory();
             }
         }
+
+
+    }
+
+
+    public void onClickMiniMapButton()
+    {
+        isOpenMiniMap = !isOpenMiniMap;
+        
+        GameObject minimapui = GameObject.Find("Canvas").transform.Find("game ui").transform.Find("minimap ui").gameObject;        
+        minimapui.SetActive(isOpenMiniMap);
+
 
 
     }

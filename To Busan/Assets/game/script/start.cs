@@ -74,10 +74,6 @@ public class start : MonoBehaviour
         for (int k = 0; k < require_part_num; k++)
         {
             int rand = Random.Range(0, parts.Count);
-            Debug.Log(parts[rand]);
-
-
-
 
             TextMeshProUGUI current_text = mission_list.transform.Find(parts[rand]).GetChild(0).GetComponent<TextMeshProUGUI>();
 
