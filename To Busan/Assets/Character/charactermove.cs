@@ -19,7 +19,7 @@ public class charactermove : MonoBehaviour
     //public int  PlayerSetting=0;
 
     public float count = 0.0f;
-    public float longclick_time = 0.2f;
+    public float longclick_time = 0.3f;
     public GameObject foundChest;
 
 
