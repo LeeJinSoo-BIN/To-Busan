@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 2748afa75cf91be48a123381018f8e3b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gear: {fileID: 21300000, guid: d023d2dff732ba645a44638e9a7bb87d, type: 3}
+  - oil: {fileID: 21300000, guid: 5440b52732eae034cb88fbf911db4ab6, type: 3}
+  - driver: {fileID: 21300000, guid: db62ebad88d893b49a872d0a8c69b986, type: 3}
+  - screw: {fileID: 21300000, guid: fc1059a22d309ae468dd2a91b5b761ba, type: 3}
+  - iron: {fileID: 21300000, guid: 9119e77071a1c6a418c201102fb707a7, type: 3}
+  - kit: {fileID: 21300000, guid: 34dd82d8740c19940a5ae9eebc1a9955, type: 3}
+  - night_vision: {fileID: 21300000, guid: 9beeda035a0200b4aafd5fea5b03c48f, type: 3}
+  - scan: {fileID: 21300000, guid: 3028228d5636bba4ea94f275d87ad1f4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
