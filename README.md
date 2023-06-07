@@ -21,16 +21,16 @@
 
 ### 부품
 ||||
-|:---|:----|:----|
+|:---:|:---:|:---:|
 |<img src="readme img/driver.png" width = 60>|<img src="readme img/gear.png" width = 60> |<img src="readme img/iron.png" width = 60> |
-|<img src="readme img/oil.png" width = 60> |<img src="readme img/screw.png" width = 60>
+|<img src="readme img/oil.png" width = 60> |<img src="readme img/screw.png" width = 60>|x
 
 
 ### 아이템
 
-||||
-|:---|:----|:----|
-|<img src="readme img/night_vision.png" width = 60> <br>아갼 투시경 |<img src="readme img/kit.png" width = 60><br>의료 키트 |
+|||
+|:---:|:----:|
+|<img src="readme img/night_vision.png" width = 60> <br>아갼 투시경 |<img src="readme img/kit.png" width = 60><br>의료 키트
 
 야간 투시경 : 사용시 일정 시간 동안 시야 증가 (밤에만 사용 가능)
 의료 키트 : 좀비를 
